@@ -1033,15 +1033,15 @@ footer{background:var(--navy);color:#fff;padding:60px 24px 32px}
             <input type="hidden" name="form-name" value="contact"/>
             <p hidden><label>Do not fill: <input name="bot-field"/></label></p>
             <div class="form-row">
-              <div class="form-group"><label>First Name</label><input type="text" placeholder="Maria"/></div>
-              <div class="form-group"><label>Last Name</label><input type="text" placeholder="Torres"/></div>
+              <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="Maria"/></div>
+              <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Torres"/></div>
             </div>
-            <div class="form-group"><label>Email Address</label><input type="email" placeholder="maria@yourbusiness.com"/></div>
-            <div class="form-group"><label>Phone Number <span>(optional)</span></label><input type="tel" placeholder="(555) 000-0000"/></div>
-            <div class="form-group"><label>Business Name</label><input type="text" placeholder="Your Business Name"/></div>
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="maria@yourbusiness.com"/></div>
+            <div class="form-group"><label>Phone Number <span>(optional)</span></label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
+            <div class="form-group"><label>Business Name</label><input type="text" name="business_name" placeholder="Your Business Name"/></div>
             <div class="form-group">
               <label>What do you need help with?</label>
-              <select>
+              <select name="service">
                 <option value="">Select a service...</option>
                 <option>Starter Website ($750)</option>
                 <option>Full Website Build (custom quote)</option>
@@ -1053,10 +1053,10 @@ footer{background:var(--navy);color:#fff;padding:60px 24px 32px}
                 <option>Not sure yet — let's talk</option>
               </select>
             </div>
-            <div class="form-group"><label>Tell me about your business <span>(optional)</span></label><textarea placeholder="A few sentences about what you do, who you serve, and what you're hoping to achieve..."></textarea></div>
+            <div class="form-group"><label>Tell me about your business <span>(optional)</span></label><textarea name="business_details" placeholder="A few sentences about what you do, who you serve, and what you're hoping to achieve..."></textarea></div>
             <div class="form-group">
               <label>How did you hear about us?</label>
-              <select>
+              <select name="referral_source">
                 <option value="">Select one...</option>
                 <option>Instagram</option>
                 <option>Google</option>
@@ -1098,7 +1098,7 @@ footer{background:var(--navy);color:#fff;padding:60px 24px 32px}
         <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@yourbusiness.com"/></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Business Name</label><input type="text" placeholder="Your Business Name"/></div>
+        <div class="form-group"><label>Business Name</label><input type="text" name="business_name" placeholder="Your Business Name"/></div>
         <div class="form-group"><label>Instagram / Website <span>(optional)</span></label><input type="text" placeholder="@handle or www.yoursite.com"/></div>
       </div>
 
@@ -1239,24 +1239,7 @@ function filterPortfolio(cat,btn){
   });
 }
 
-function submitForm(){}
-document.addEventListener('DOMContentLoaded',function(){
-  var form=document.getElementById('contact-form-el');
-  if(form){
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      var data=new FormData(form);
-      fetch('/',{method:'POST',body:data})
-        .then(function(){
-          document.getElementById('contact-form').style.display='none';
-          document.getElementById('form-success').style.display='block';
-        })
-        .catch(function(){
-          alert('Something went wrong. Please email hello@kinionline.com directly.');
-        });
-    });
-  }
-});
+/* Netlify Forms handles submission natively */
 
 function submitIntake(){
   document.getElementById('intake-success').style.display='block';
